@@ -38,6 +38,28 @@ def dice(i):
         print("│O O│")
         print("└───┘")
 
+def slots(coins):
+    print(" ________ ")
+    print("|        \ ")
+    print(" \$$$$$$$$")
+    print("    /  $$ ")
+    print("   /  $$  ")
+    print("  /  $$   ")
+    print(" /  $$    ")
+    print("|  $$     ")
+    print("\$$      ")
+
+    print("          ")
+    print("  _$      ")
+    print("   \$     ")
+    print("    |$    ")
+    print("    /$    ")
+    print(" __| \$_  ")
+    print("/  $ /  $ ")
+    print("|   $|   $")
+    print("\$$$ \$$$ ")
+    return(coins)
+
 def kocke(coins):
 
     coins = coins - 1
@@ -70,10 +92,13 @@ def main():
     coins = 10
     while(True):
         print(f"Imaš >{coins}< kovancev")
-        i = int(input("Katero igro želiš igrati?\n 1 - kockanje (1 kovanec)\n če si zadovoljen z svojimi dobički klikni ^C\n"))
+        i = int(input("Katero igro želiš igrati?\n 1 - kockanje (1 kovanec)\n 2 - slot mashine(3 kovanci)\n če si zadovoljen z svojimi dobički klikni ^C\n"))
         if(i==1):
             coins = kocke(coins)
-
+        if(i==2):
+            slots(coins)
+        else:
+            print("Te številke no v sistemu")
 
 
 
