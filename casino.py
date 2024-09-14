@@ -1,5 +1,6 @@
 import random
-
+import sys
+import time
 def dice(i):
     if(i==1):
         print("┌───┐")
@@ -39,25 +40,56 @@ def dice(i):
         print("└───┘")
 
 def slots(coins):
-    print(" ________ ")
-    print("|        \ ")
-    print(" \$$$$$$$$")
-    print("    /  $$ ")
-    print("   /  $$  ")
-    print("  /  $$   ")
-    print(" /  $$    ")
-    print("|  $$     ")
-    print("\$$      ")
 
-    print("          ")
-    print("  _$      ")
-    print("   \$     ")
-    print("    |$    ")
-    print("    /$    ")
-    print(" __| \$_  ")
-    print("/  $ /  $ ")
-    print("|   $|   $")
-    print("\$$$ \$$$ ")
+    i = 1
+    a = random.randint(1,5)
+    b = random.randint(1,5)
+    c = random.randint(1,5)
+    for i in range(4):
+        match i:
+            case 1:
+                match a:
+                    case 1:
+                        d = '🍋'
+                    case 2:
+                        d = '🔔'
+                    case 3:
+                        d = '⭐'
+                    case 4:
+                        d = '🍒'
+                    case 5:
+                        d = '7️'
+            case 2:
+                match b:
+                    case 1:
+                        e = '🍋'
+                    case 2:
+                        e = '🔔'
+                    case 3:
+                        e = '⭐'
+                    case 4:
+                        e = '🍒'
+                    case 5:
+                        e = '7️'
+            case 3:
+                match c:
+                    case 1:
+                        f = '🍋'
+                    case 2:
+                        f = '🔔'
+                    case 3:
+                        f = '⭐'
+                    case 4:
+                        f = '🍒'
+                    case 5:
+                        f = '7️'
+    sys.stdout.write(f"\n\n{d}  {e}  {f}\n\n")
+    match a:
+        case b:
+            coins=coins+3
+        case c:
+            coins=coins+3
+
     return(coins)
 
 def kocke(coins):
@@ -92,13 +124,14 @@ def main():
     coins = 10
     while(True):
         print(f"Imaš >{coins}< kovancev")
-        i = int(input("Katero igro želiš igrati?\n 1 - kockanje (1 kovanec)\n 2 - slot mashine(3 kovanci)\n če si zadovoljen z svojimi dobički klikni ^C\n"))
+        i = int(input("Katero igro želiš igrati?\n 1 - kockanje🎲 (1 kovanec)\n 2 - slot mashine🎰 (3 kovanci)\n če si zadovoljen z svojimi dobički vpiši kar koli drugegea\n"))
         if(i==1):
             coins = kocke(coins)
         if(i==2):
             slots(coins)
         else:
             print("Te številke no v sistemu")
+            exit()
 
 
 

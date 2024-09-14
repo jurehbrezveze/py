@@ -1,10 +1,12 @@
-f[[30]*2]
+import pygame
+from sys import exit
+pygame.init()
+screen = pygame.display.set_mode((800,400))
 
-for i in range(30):
-    for j in range(30):
-        f[i][j] = '.'
+while True:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            exit()
 
-for i in range(30):
-    for j in range(30):
-        print(f[i][j])
-    print("\n")
+    pygame.display.update()
