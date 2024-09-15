@@ -1,6 +1,8 @@
 import random
 import sys
-import time
+from tkinter import *
+
+
 def dice(i):
     if(i==1):
         print("┌───┐")
@@ -40,8 +42,9 @@ def dice(i):
         print("└───┘")
 
 def slots(coins):
-
+    coins = coins -3
     i = 1
+    g = 0
     a = random.randint(1,5)
     b = random.randint(1,5)
     c = random.randint(1,5)
@@ -84,11 +87,26 @@ def slots(coins):
                     case 5:
                         f = '7️'
     sys.stdout.write(f"\n\n{d}  {e}  {f}\n\n")
-    match a:
-        case b:
-            coins=coins+3
-        case c:
-            coins=coins+3
+    if a == b:
+        coins=coins+4
+        g=g+4
+    if a == c:
+        coins=coins+4
+        g=g+4
+    if b == c:
+        coins=coins+4
+        g=g+4
+    if a == b == c:
+        if a == 5:
+            print("MEGA JACKPOT!!!\n")
+            coins=coins+10
+            g=g+10
+        else:
+            print("JACKPOT!!!\n")
+    if g != 0:
+        print(f"Dobil si {g} kovancev!!!\n")
+    else:
+        print("Več sreče prihondjič\n")
 
     return(coins)
 
@@ -127,8 +145,10 @@ def main():
         i = int(input("Katero igro želiš igrati?\n 1 - kockanje🎲 (1 kovanec)\n 2 - slot mashine🎰 (3 kovanci)\n če si zadovoljen z svojimi dobički vpiši kar koli drugegea\n"))
         if(i==1):
             coins = kocke(coins)
-        if(i==2):
-            slots(coins)
+        elif(i==2):
+            coins = slots(coins)
+        elif(i==69):
+            coins = 100
         else:
             print("Te številke no v sistemu")
             exit()
