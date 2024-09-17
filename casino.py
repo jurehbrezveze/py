@@ -3,44 +3,56 @@ import sys
 from tkinter import *
 
 
-def dice(i):
-    if(i==1):
-        print("┌─────┐")
-        print("│     │")
-        print("│  O  │")
-        print("│     │")
-        print("└─────┘")
-    if(i==2):
-        print("┌─────┐")
-        print("│ O   │")
-        print("│     │")
-        print("│   O │")
-        print("└─────┘")
-    if(i==3):
-        print("┌─────┐")
-        print("│ O   │")
-        print("│  O  │")
-        print("│   O │")
-        print("└─────┘")
-    if(i==4):
-        print("┌─────┐")
-        print("│ O O │")
-        print("│     │")
-        print("│ O O │")
-        print("└─────┘")
-    if(i==5):
-        print("┌─────┐")
-        print("│ O O │")
-        print("│  O  │")
-        print("│ O O │")
-        print("└─────┘")
-    if(i==6):
-        print("┌─────┐")
-        print("│ O O │")
-        print("│ O O │")
-        print("│ O O │")
-        print("└─────┘")
+def dice():
+    s1 = ''
+    s2 = ''
+    s3 = ''
+    s4 = ''
+    s5 = ''
+    t=0
+    for i in range(2):
+        i = random.randint(1,6)
+        t=t+i
+        if(i==1):
+            s1=s1+"┌─────┐"
+            s2=s2+"│     │"
+            s3=s3+"│  O  │"
+            s4=s4+"│     │"
+            s5=s5+"└─────┘"
+        if(i==2):
+            s1=s1+"┌─────┐"
+            s2=s2+"│ O   │"
+            s3=s3+"│     │"
+            s4=s4+"│   O │"
+            s5=s5+"└─────┘"
+        if(i==3):
+            s1=s1+"┌─────┐"
+            s2=s2+"│ O   │"
+            s3=s3+"│  O  │"
+            s4=s4+"│   O │"
+            s5=s5+"└─────┘"
+        if(i==4):
+            s1=s1+"┌─────┐"
+            s2=s2+"│ O O │"
+            s3=s3+"│     │"
+            s4=s4+"│ O O │"
+            s5=s5+"└─────┘"
+        if(i==5):
+            s1=s1+"┌─────┐"
+            s2=s2+"│ O O │"
+            s3=s3+"│  O  │"
+            s4=s4+"│ O O │"
+            s5=s5+"└─────┘"
+        if(i==6):
+            s1=s1+"┌─────┐"
+            s2=s2+"│ O O │"
+            s3=s3+"│ O O │"
+            s4=s4+"│ O O │"
+            s5=s5+"└─────┘"
 
+    print('\b',s1,'\n',s2,'\n',s3,'\n',s4,'\n',s5,'\n')
+
+    return(t)
 def slots(coins):
     coins = coins -3
     i = 1
@@ -117,13 +129,8 @@ def kocke(coins):
     t = 0
     j = int(input("Koliko bo seštevek meta dveh kock?\n"))
 
-    i = random.randint(1,6)
-    dice(i)
-    t = t + i
+    t = t + dice()
 
-    i = random.randint(1,6)
-    dice(i)
-    t = t + i
 
     if(j==t):
         print("Zmagal si, dobiš 10 kovancev")
@@ -132,21 +139,40 @@ def kocke(coins):
         print("Ni ti uspelo (womp womp)")
 
     return(coins)
+
+def plinko(coins):
+
+    a='┌'
+    b='┐'
+    c=random.randint(0,1)
+    print('\n\n\n\n\n\n\n\n\n\n')
+    print(f'    {a}{b}')
+    print(f'   {a}{b}{a}{b}')
+    print(f'  {a}{b}{a}{b}{a}{b}')
+    print(f' {a}{b}{a}{b}{a}{b}{a}{b}')
+    print(f'{a}{b}{a}{b}{a}{b}{a}{b}{a}{b}')
+    print(f'4321001234')
+
+
+    return(coins)
 def main():
+#    print("\033[1;32;40m\n")
     print("░█████╗░░█████╗░░██████╗██╗███╗░░██╗░█████╗░")
     print("██╔══██╗██╔══██╗██╔════╝██║████╗░██║██╔══██╗")
     print("██║░░╚═╝███████║╚█████╗░██║██╔██╗██║██║░░██║")
     print("██║░░██╗██╔══██║░╚═══██╗██║██║╚████║██║░░██║")
     print("╚█████╔╝██║░░██║██████╔╝██║██║░╚███║╚█████╔╝")
-    print("░╚════╝░╚═╝░░╚═╝╚═════╝░╚═╝╚═╝░░╚══╝░╚════╝░\n\n\n\n\n")
+    print("░╚════╝░╚═╝░░╚═╝╚═════╝░╚═╝╚═╝░░╚══╝░╚════╝░\n\n\n\n")
     coins = 10
     while(True):
         print(f"Imaš >{coins}< kovancev")
-        i = int(input("Katero igro želiš igrati?\n 1 - kockanje🎲 (1 kovanec)\n 2 - slot mashine🎰 (3 kovanci)\n če si zadovoljen z svojimi dobički vpiši kar koli drugegea\n"))
+        i = int(input("Katero igro želiš igrati?\n 1 - kockanje🎲 (1 kovanec)\n 2 - slot mashine🎰 (3 kovanci)\n 3 - plinko (po želji) \nče si zadovoljen z svojimi dobički vpiši kar koli drugegea\n"))
         if(i==1):
             coins = kocke(coins)
         elif(i==2):
             coins = slots(coins)
+        elif(i==3):
+            coins = plinko(coins)
         elif(i==69):
             coins = 100
         else:
