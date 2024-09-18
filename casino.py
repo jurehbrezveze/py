@@ -1,6 +1,6 @@
 import random
 import sys
-from tkinter import *
+import time
 
 
 def dice():
@@ -141,19 +141,78 @@ def kocke(coins):
     return(coins)
 
 def plinko(coins):
-
-    a='┌'
-    b='┐'
-    c=random.randint(0,1)
-    print('\n\n\n\n\n\n\n\n\n\n')
-    print(f'    {a}{b}')
-    print(f'   {a}{b}{a}{b}')
-    print(f'  {a}{b}{a}{b}{a}{b}')
-    print(f' {a}{b}{a}{b}{a}{b}{a}{b}')
-    print(f'{a}{b}{a}{b}{a}{b}{a}{b}{a}{b}')
-    print(f'4321001234')
-
-
+    a=['┌'],['┌','┌'],['┌','┌','┌'],['┌','┌','┌','┌'],['┌','┌','┌','┌','┌']
+    b=['┐'],['┐','┐'],['┐','┐','┐'],['┐','┐','┐','┐'],['┐','┐','┐','┐','┐']
+    x=0
+    y=0
+    for y in range(5):
+        c=random.randint(0,1)
+        if x < y:
+            if c != 0:
+                x=x+1
+        match x:
+            case 0:
+                a[0][y]='O'
+            case 1:
+                b[0][y]='O'
+            case 2:
+                a[1][y]='O'
+            case 3:
+                b[1][y]='O'
+            case 4:
+                a[2][y]='O'
+            case 5:
+                b[2][y]='O'
+            case 6:
+                a[3][y]='O'
+            case 7:
+                b[3][y]='O'
+            case 8:
+                a[4][y]='O'
+            case 9:
+                b[4][y]='O'
+        print('\n\n\n\n\n\n\n\n\n\n')
+        print(f'    {a[0][0]}{b[0][0]}')
+        print(f'   {a[1][0]}{b[1][0]}{a[1][1]}{b[1][1]}')
+        print(f'  {a[2][0]}{b[2][0]}{a[2][1]}{b[2][1]}{a[2][2]}{b[2][2]}')
+        print(f' {a[3][0]}{b[3][0]}{a[3][1]}{b[3][1]}{a[3][2]}{b[3][2]}{a[3][3]}{b[3][3]}')
+        print(f'{a[4][0]}{b[4][0]}{a[4][1]}{b[4][1]}{a[4][2]}{b[4][2]}{a[4][3]}{b[4][3]}{a[4][4]}{b[4][4]}')
+        print(f'4321001234')
+        a=['┌'],['┌','┌'],['┌','┌','┌'],['┌','┌','┌','┌'],['┌','┌','┌','┌','┌']
+        b=['┐'],['┐','┐'],['┐','┐','┐'],['┐','┐','┐','┐'],['┐','┐','┐','┐','┐']
+        time.sleep(0.5)
+    print(x)
+    match x:
+        case 0:
+            print("x4")
+            coins=coins*4
+        case 1:
+            print("x3")
+            coins=coins*3
+        case 2:
+            print("x2")
+            coins=coins*2
+        case 3:
+            print("x1")
+            coins=coins*1
+        case 4:
+            print("x0")
+            coins=coins*0
+        case 5:
+            print("x0")
+            coins=coins*0
+        case 6:
+            print("x1")
+            coins=coins*1
+        case 7:
+            print("x2")
+            coins=coins*2
+        case 8:
+            print("x3")
+            coins=coins*3
+        case 9:
+            print("x4")
+            coins=coins*4
     return(coins)
 def main():
 #    print("\033[1;32;40m\n")
